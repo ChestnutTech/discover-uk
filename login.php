@@ -1,4 +1,7 @@
 <?php
+/**
+ * Login Page
+ */
 session_start();
 $error = -1;
 
