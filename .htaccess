@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+
+# Redirect to PHP if it exists.
+# e.g. example.com/foo will display the contents of example.com/foo.php
+
+#Options +FollowSymLinks
+RewriteEngine On
+
+RewriteCond %{HTTP_HOST} !^$
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+)$ $1.php [NC,L]
+RewriteRule api/(.*)$ api/api.php?request=$1 [QSA,NC,L]
+
+ErrorDocument 404 /404
+</IfModule>
